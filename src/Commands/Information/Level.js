@@ -21,6 +21,7 @@ module.exports = class extends Command {
 		const data = await new canvacord.Rank()
 			.setAvatar(toCheck.user.displayAvatarURL({ format: 'png' }))
 			.setBackground('COLOR', this.client.color)
+                        .setRank(0, "", false)
 			.setLevel(entry.level)
 			.setCurrentXP(entry.experience)
 			.setRequiredXP(Math.ceil(Math.pow((entry.level + 1) / 0.1211, 2)))
