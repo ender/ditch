@@ -80,7 +80,7 @@ module.exports = class Util {
 	}
 
 	async loadCommands() {
-		return glob(`${this.directory}commands/**/*.js`).then(commands => {
+		return glob(`${this.directory}Commands/**/*.js`).then(commands => {
 			for (const commandFile of commands) {
 				delete require.cache[commandFile];
 				const { name } = path.parse(commandFile);
@@ -99,7 +99,7 @@ module.exports = class Util {
 	}
 
 	async loadEvents() {
-		return glob(`${this.directory}events/**/*.js`).then(events => {
+		return glob(`${this.directory}Events/**/*.js`).then(events => {
 			for (const eventFile of events) {
 				delete require.cache[eventFile];
 				const { name } = path.parse(eventFile);
