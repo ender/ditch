@@ -1,0 +1,20 @@
+{
+  "name": "mid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index",
+  "scripts": {
+    "start": "node src/index"
+  },
+  "author": "shaky#0001",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "canvacord": "^5.2.3",
+    "discord.js": "^13.6.0",
+    "glob": "^7.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
+}
