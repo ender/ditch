@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 		if (amount < 5) return message.reply('You must delete at least 5 messages.');
 
-		if (!scope) {
+		if (scope.length) {
 			if (message.deletable) await message.delete();
 
 			const { size } = await message.channel.bulkDelete(amount, true);
