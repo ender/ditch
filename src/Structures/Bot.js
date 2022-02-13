@@ -30,7 +30,7 @@ module.exports = class Bot extends Client {
 
 		this.utils = new Util(this);
 
-		this.db = new Database('users.sqlite');
+		this.db = new Database('/opt/ditch/users.sqlite');
 
 		const table = this.db.prepare('SELECT count(*) FROM sqlite_master WHERE type=\'table\' AND name = \'users\';').get();
 
