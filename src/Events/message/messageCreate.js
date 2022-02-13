@@ -40,6 +40,7 @@ module.exports = class extends Event {
 		const prefix = message.content.match(mentionRegexPrefix) ? message.content.match(mentionRegexPrefix)[0] : this.client.prefix;
 
 		if (!message.content.startsWith(prefix)) return;
+		if (message.content.startsWith(message.content.match(mentionRegexPrefix)[0])) message.mentions.members.delete(message.mentions.members.first());
 
 		const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
 
