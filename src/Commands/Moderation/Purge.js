@@ -20,24 +20,30 @@ module.exports = class extends Command {
 
 		if (amount < 5) return message.reply('You must delete at least 5 messages.');
 
-		if (scope.length) {
+		if (!scope.length) {
 			if (message.deletable) await message.delete();
 
-			const { size } = await message.channel.bulkDelete(amount, true);
+			const { size } = await message.channel.bulkDelete(amount, true).catch(() => {
+				const toDelete = message.channel.messages.fetch({ limit: amount });
+				toDelete.forEach(async msg => await msg.delete());
+
+				return message.channel.send(`Deleted ${toDelete.size} messages.`);
+			});
 			return message.channel.send(`Deleted ${size} messages.`);
 		}
 
-		const user = this.client.utils.getMemberExclusive(message, scope[0]);
+		const user = this.client.utils.getMemberStrict(message, scope[0]);
 
 		let toDelete;
 		if (user && scope.length > 1) {
-			toDelete = message.channel.messages.cache.filter(m => m.author.id === user.id && m.content.toLowerCase().includes(scope.slice(1).join(' ').toLowerCase()));
+			toDelete = message.channel.messages.cache.filter(m => m.author.id === user.id && m.content.toLowerCase().trim().includes(scope.slice(1).join(' ').toLowerCase().trim())
+                && m.id !== message.id);
 		}
 		else if (user) {
-			toDelete = message.channel.messages.cache.filter(m => m.author.id === user.id);
+			toDelete = message.channel.messages.cache.filter(m => m.author.id === user.id && m.id !== message.id);
 		}
 		else {
-			toDelete = message.channel.messages.cache.filter(m => m.content.toLowerCase().includes(scope.join(' ').toLowerCase()));
+			toDelete = message.channel.messages.cache.filter(m => m.content.toLowerCase().trim().includes(scope.join(' ').toLowerCase().trim()) && m.id !== message.id);
 		}
 
 		if (toDelete.size === 0) return message.reply('I could not find any messages matching your specifications.');
