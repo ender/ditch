@@ -31,7 +31,7 @@ module.exports = class Util {
 
 		if (!target && message.mentions.members) {target = message.mentions.members.first();}
 
-		if (!target && toFind) {
+		if (!target) {
 			target = message.guild.members.cache.find(member => {
 				return member.displayName.toLowerCase().includes(toFind) ||
 					member.user.tag.toLowerCase().includes(toFind);
@@ -52,7 +52,7 @@ module.exports = class Util {
 
 		if (!target && message.mentions.members) {target = message.mentions.members.first();}
 
-		if (!target && toFind) {
+		if (!target) {
 			target = message.guild.members.cache.find(member => {
 				return member.displayName.toLowerCase().includes(toFind) ||
 					member.user.tag.toLowerCase().includes(toFind);
@@ -60,6 +60,23 @@ module.exports = class Util {
 		}
 
 		return target;
+	}
+
+	getMemberStrict(message, toFind) {
+		if (!toFind) return null;
+
+		toFind = toFind.toLowerCase();
+
+		let target = message.guild.members.cache.get(toFind);
+
+		if (!target && message.mentions.members) {target = message.mentions.members.first();}
+
+		if (!target) {
+			target = message.guild.members.cache.find(member => {
+				return member.displayName.toLowerCase() === toFind ||
+					member.user.username.toLowerCase() === toFind;
+			});
+		}
 	}
 
 	getRole(guild, toFind) {
