@@ -1,7 +1,7 @@
 {
-  "name": "mid",
+  "name": "ditch",
   "version": "1.0.0",
-  "description": "",
+  "description": ".gg/ditch",
   "main": "src/index",
   "scripts": {
     "start": "node src/index"
