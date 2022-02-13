@@ -27,7 +27,7 @@ module.exports = class extends Command {
 			return message.channel.send(`Deleted ${size} messages.`);
 		}
 
-		const user = this.client.utils.getMemberExlclusive(message, scope[0]);
+		const user = this.client.utils.getMemberExclusive(message, scope[0]);
 
 		let toDelete;
 		if (user && scope.length > 1) {
