@@ -77,6 +77,8 @@ module.exports = class Util {
 					member.user.username.toLowerCase() === toFind;
 			});
 		}
+
+		return target;
 	}
 
 	getRole(guild, toFind) {
