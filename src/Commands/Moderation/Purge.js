@@ -28,14 +28,15 @@ module.exports = class extends Command {
 		}
 
 		const messages = (await message.channel.messages.fetch()).filter(m => m.id !== message.id);
-		console.log(messages.size);
 		const user = this.client.utils.getMemberStrict(message, scope[0]);
+		console.log(user);
 
-		let toDelete = messages.filter(m => m.content.toLowerCase().trim().includes(scope.join(' ').toLowerCase().trim())).first(amount);
+		let toDelete = messages.filter(m => m.content.toLowerCase().includes(scope.join(' ').toLowerCase().trim())).first(amount);
+		console.log(toDelete.size);
 
 		if (user) {
 			toDelete = messages.filter(m => m.author.id === user.id).first(amount);
-			if (scope.length > 1) toDelete = messages.filter(m => m.author.id === user.id && m.content.toLowerCase().trim().includes(scope.slice(1).join(' ').toLowerCase().trim())).first(amount);
+			if (scope.length > 1) toDelete = messages.filter(m => m.author.id === user.id && m.content.toLowerCase().includes(scope.slice(1).join(' ').toLowerCase().trim())).first(amount);
 		}
 
 		if (toDelete.size === 0) return message.reply('I could not find any messages matching your specifications.');
