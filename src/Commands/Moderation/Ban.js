@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
 		if (!target) return message.reply('You must specify a user to ban.');
 
-		const toBan = this.client.utils.getMemberStrict(target);
+		const toBan = this.client.utils.getMemberStrict(message, target);
 		if (!toBan) return message.reply('Could not find that user.');
 
 		if (toBan.id === message.author.id) return message.reply('You cannot ban yourself.');

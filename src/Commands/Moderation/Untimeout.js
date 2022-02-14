@@ -18,7 +18,7 @@ module.exports = class extends Command {
 
 		if (!target) return message.reply('You must specify a user to take out of timeout.');
 
-		const toUntime = this.client.utils.getMemberStrict(target);
+		const toUntime = this.client.utils.getMemberStrict(message, target);
 		if (!toUntime) return message.reply('Could not find that user.');
 
 		if (!toUntime.isCommunicationDisabled()) return message.reply('That user is not currently in timeout.');

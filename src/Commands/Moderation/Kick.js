@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
 		if (!target) return message.reply('You must specify a user to kick.');
 
-		const toKick = this.client.utils.getMemberStrict(target);
+		const toKick = this.client.utils.getMemberStrict(message, target);
 		if (!toKick) return message.reply('Could not find that user.');
 
 		if (toKick.id === message.author.id) return message.reply('You cannot kick yourself.');

@@ -19,7 +19,7 @@ module.exports = class extends Command {
 		if (!target) return message.reply('You must specify a user to timeout.');
 		if (!length) return message.reply('You must specify a length of time to timeout the user.');
 
-		const toTime = this.client.utils.getMemberStrict(target);
+		const toTime = this.client.utils.getMemberStrict(message, target);
 		if (!toTime) return message.reply('Could not find that user.');
 
 		if (toTime.id === message.author.id) return message.reply('You cannot timeout yourself.');
