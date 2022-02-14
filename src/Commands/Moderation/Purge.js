@@ -28,6 +28,7 @@ module.exports = class extends Command {
 		}
 
 		const messages = (await message.channel.messages.fetch()).filter(m => m.id !== message.id);
+		console.log(messages.size);
 		const user = this.client.utils.getMemberStrict(message, scope[0]);
 
 		let toDelete = messages.filter(m => m.content.toLowerCase().trim().includes(scope.join(' ').toLowerCase().trim())).first(amount);
