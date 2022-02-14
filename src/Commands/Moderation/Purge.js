@@ -29,7 +29,7 @@ module.exports = class extends Command {
 
 		const messages = (await message.channel.messages.fetch()).filter(m => m.id !== message.id);
 		const user = this.client.utils.getMemberStrict(message, scope[0]);
-		console.log(user);
+		console.log(scope[0]);
 
 		let toDelete = messages.filter(m => m.content.toLowerCase().includes(scope.join(' ').toLowerCase().trim())).first(amount);
 		console.log(toDelete.size);
@@ -39,7 +39,7 @@ module.exports = class extends Command {
 			if (scope.length > 1) toDelete = messages.filter(m => m.author.id === user.id && m.content.toLowerCase().includes(scope.slice(1).join(' ').toLowerCase().trim())).first(amount);
 		}
 
-		if (toDelete.size === 0) return message.reply('I could not find any messages matching your specifications.');
+		if (!toDelete) return message.reply('I could not find any messages matching your specifications.');
 
 		if (message.deletable) await message.delete();
 
