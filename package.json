@@ -1,12 +1,12 @@
 {
   "name": "ditch",
   "version": "1.0.0",
-  "description": ".gg/ditch",
+  "description": "",
   "main": "src/index",
   "scripts": {
     "start": "node src/index"
   },
-  "author": "shaky#0001",
+  "author": "ender",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^7.5.0",
