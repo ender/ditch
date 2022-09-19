@@ -1,7 +1,7 @@
 # ditch (archived)
 Simple Discord bot created using an advanced handler from [MenuDocs](https://github.com/MenuDocs/discord.js-template) and modified (albeit slightly) for Discord.js v13.
 
-**Note: This project is dead but may contain useful code for *someone* and/or possibly me in the future. It is always recommended to use the latest version of any software, and Discord.js is now on version >= 14 while this project is based on version 13.**
+**Note: This project is dead but may contain useful code for *someone* and/or possibly me in the future. It is always recommended to use the latest version of any software, and Discord.js is now on version `>= 14` while this project is based on version `13.6.0`.**
 
 # usage
 
